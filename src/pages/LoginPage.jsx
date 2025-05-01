@@ -1,13 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    alert(`Login attempt:\nEmail: ${email}\nPassword: ${password}`);
+    try {
+      console.log("Data yang dikirim:", { email, password });
+
+      const response = await axios.post('https://sbd-express.fbqyyk.easypanel.host/user/login', {
+        email,
+        password,
+      });
+
+      alert('Login berhasil!');
+      console.log("Response dari backend:", response.data);
+
+      // Redirect ke halaman utama setelah login berhasil
+      navigate('/dashboard');
+    } catch (error) {
+      console.error("Error saat login:", error);
+      const errorMessage = error.response?.data?.error || 'Failed to login';
+      alert(`Error: ${errorMessage}`);
+    }
   };
 
   return (
@@ -35,7 +54,8 @@ export default function LoginPage() {
               className="w-full px-4 py-2 rounded border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required/>
+              required
+            />
           </div>
 
           <button
@@ -46,7 +66,7 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-4 text-sm text-center text-black">
-        Belum punya akun? <Link to="/register" className="text-blue-500 hover:underline">Daftar di sini</Link>
+          Belum punya akun? <Link to="/register" className="text-blue-500 hover:underline">Daftar di sini</Link>
         </p>
       </div>
     </div>

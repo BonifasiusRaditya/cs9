@@ -7,31 +7,31 @@ const data = [
     id: 1,
     title: "Laptop Gaming XZ",
     body: "Laptop performa tinggi dengan prosesor Ryzen 7 dan GPU RTX 4060, cocok untuk gaming dan produktivitas.",
-    imageUrl: "laptop.jpg", // ganti dengan URL gambar laptop
+    imageUrl: "laptop.jpg", 
   },
   {
     id: 2,
     title: "Headset Wireless Pro",
     body: "Headset nirkabel dengan kualitas suara jernih dan noise cancelling aktif.",
-    imageUrl: "headset.jpg", // ganti dengan URL gambar headset
+    imageUrl: "headset.jpg",
   },
   {
     id: 3,
     title: "Smartwatch FitLife",
     body: "Jam tangan pintar dengan fitur pelacak aktivitas dan pemantau detak jantung.",
-    imageUrl: "smartwatch.jpg", // ganti dengan URL gambar smartwatch
+    imageUrl: "smartwatch.jpg", 
   },
   {
     id: 4,
     title: "Kamera Mirrorless X10",
     body: "Kamera ringan dengan sensor APS-C 24MP dan dukungan perekaman 4K.",
-    imageUrl: "kamera.jpg", // ganti dengan gambar kamera jika tersedia
+    imageUrl: "kamera.jpg",
   },
   {
     id: 5,
     title: "Kursi Gaming Comfort Z",
     body: "Kursi ergonomis dengan busa premium untuk kenyamanan bermain atau bekerja berjam-jam.",
-    imageUrl: "kamera.jpg", // bisa diganti dengan gambar kursi
+    imageUrl: "kamera.jpg",
   },
   {
     id: 6,
@@ -111,6 +111,7 @@ export default function HomePage() {
         
         <div className="p-8">
           <h1 className="text-3xl font-bold mb-8 text-center text-black">Welcome To Kantas Store!! ✨</h1>
+          <h5 className='text-center text-black'>jujur bang, backend nya tbtb error pas w deploy ulang. Padahal sebelumnya bisa. Saya nyerah</h5>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {data.map((item) => (
               <div key={item.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">

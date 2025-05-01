@@ -10,29 +10,23 @@ export default function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      // Log data yang akan dikirim untuk memastikan semuanya benar
       console.log("Data yang dikirim:", {
         email,
         password,
         name: username,
       });
   
-      // Kirim data ke backend menggunakan axios
       const response = await axios.post('https://sbd-express.fbqyyk.easypanel.host/user/register', {
         email,
         password,
-        name: username, // Backend menerima "name" sebagai username
+        name: username, 
       });
   
-      // Jika berhasil, tampilkan pesan sukses dan arahkan ke halaman login
       alert('Registrasi berhasil!');
       console.log("Response dari backend:", response.data);
-      navigate('/login'); // Redirect ke halaman login
+      navigate('/login');
     } catch (error) {
-      // Log error untuk debugging
       console.error("Error saat registrasi:", error);
-  
-      // Ambil pesan error dari response backend jika ada
       const errorMessage = error.response?.data?.error || 'Failed to register';
       alert(`Error: ${errorMessage}`);
     }
